@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="KINGFISHER">
+
+  <!-- Kingfisher base -->
+  <xacro:include filename="$(find kingfisher_description)/urdf/kingfisher_base.urdf.xacro" />
+
+  <!-- ==== VMRC sensor configuration ==== -->
+  <!-- Add NAVIO board -->
+  <xacro:include filename="$(find kingfisher_description)/urdf/sensors/kingfisher_NAVIO.xacro" />
+  <xacro:kingfisher_NAVIO name="NAVIO_kingfisher" x="0.034727" y="0.022524" z="${0.052-(0.00115/2)}" />
+
+
+</robot>

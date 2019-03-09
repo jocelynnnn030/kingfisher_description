@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="kingfisher_rod" params="name:=rod">
+    <link name="${name}_rod">
+      <visual name="${name}_rod_visual">>
+        <geometry>
+          <box size="0.020 0.800 0.020" />
+        </geometry>
+      </visual>
+      <collision name="${name}_rod_collision">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.020 0.800 0.020" />
+          </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+</robot>

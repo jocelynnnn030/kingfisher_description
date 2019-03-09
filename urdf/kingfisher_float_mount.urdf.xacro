@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="KINGFISHER">
+
+  <xacro:include filename="$(find kingfisher_description)/urdf/parts/kingfisher_rod.xacro" />
+  <xacro:include filename="$(find kingfisher_description)/urdf/parts/kingfisher_float.xacro" />
+
+
+  <link name="float_mount_link">
+    <visual name="float_mount_visual">>
+      <geometry>
+        <box size="0.700 0.759 0.030" />
+      </geometry>
+    </visual>
+    <collision name="float_collision">
+      <origin xyz="0 0 ${0.18/2-0.03/2}" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.8 1.2 0.18" />
+        </geometry>
+    </collision>
+  </link>
+
+  <xacro:kingfisher_rod name="left"/>
+  <xacro:kingfisher_rod name="right"/>
+
+  <xacro:kingfisher_float name="left"/>
+  <xacro:kingfisher_float name="right"/>
+
+  <joint name="left_rod_joint" type="fixed">
+    <origin xyz="0.21 0 -0.02" rpy="0 0 0"/>
+    <parent link="float_mount_link"/>
+    <child link="left_rod"/>
+  </joint>
+
+  <joint name="right_rod_joint" type="fixed">
+    <origin xyz="-0.21 0 -0.02" rpy="0 0 0"/>
+    <parent link="float_mount_link"/>
+    <child link="right_rod"/>
+  </joint>
+
+  <joint name="left_float_joint" type="fixed">
+    <origin xyz="0.31 0 0.08" rpy="0 0 0"/>
+    <parent link="float_mount_link"/>
+    <child link="left_float"/>
+  </joint>
+
+  <joint name="right_float_joint" type="fixed">
+    <origin xyz="-0.31 0 0.08" rpy="0 0 0"/>
+    <parent link="float_mount_link"/>
+    <child link="right_float"/>
+  </joint>
+
+
+
+</robot>

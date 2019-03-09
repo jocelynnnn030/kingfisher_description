@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="kingfisher_float" params="name:=float L_front:=0.200">
+    <link name="${name}_float"> </link>
+
+    <link name="${name}_float_front_end">
+      <visual name="${name}_float_front_end_visual">>
+        <geometry>
+          <sphere radius="0.075"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${name}_float_back_end">
+      <visual name="${name}_float_back_end_visual">>
+        <geometry>
+          <sphere radius="0.075"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${name}_float_front">
+      <visual name="${name}_float_front_visual">>
+        <geometry>
+          <cylinder length="${0.360+L_front-0.075}" radius="0.075"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${name}_float_back">
+      <visual name="${name}_float_back_visual">>
+        <geometry>
+          <cylinder length="${0.360}" radius="0.075"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_float_front_joint" type="fixed">
+      <origin xyz="0 ${(0.360+L_front-0.075)/2} 0" rpy="1.57 0 0"/>
+      <parent link="${name}_float"/>
+      <child link="${name}_float_front"/>
+    </joint>
+
+    <joint name="${name}_float_front_end_joint" type="fixed">
+      <origin xyz="0 ${0.360+L_front-0.075} 0" rpy="0 0 0"/>
+      <parent link="${name}_float"/>
+      <child link="${name}_float_front_end"/>
+    </joint>
+
+    <joint name="${name}_float_back_joint" type="fixed">
+      <origin xyz="0 ${-0.360/2} 0" rpy="-1.57 0 0"/>
+      <parent link="${name}_float"/>
+      <child link="${name}_float_back"/>
+    </joint>
+
+    <joint name="${name}_float_back_end_joint" type="fixed">
+      <origin xyz="0 ${-0.360} 0" rpy="0 0 0"/>
+      <parent link="${name}_float"/>
+      <child link="${name}_float_back_end"/>
+    </joint>
+
+  </xacro:macro>
+</robot>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="KINGFISHER">
+
+  <xacro:include filename="$(find kingfisher_description)/urdf/parts/kingfisher_enclosure.urdf.xacro" />
+  <xacro:include filename="$(find kingfisher_description)/urdf/kingfisher_float_mount.urdf.xacro" />
+
+  <!-- Basic model of the 16' WAM-V USV -->
+  <link name="base_link"> </link>
+
+
+  <joint name="float_mount_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="3.14 0 3.14"/>
+    <parent link="base_link"/>
+    <child link="float_mount_link"/>
+  </joint>
+
+  <joint name="enclosure_joint" type="fixed">
+    <origin xyz="0 0 0.0375" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="enclosure_link"/>
+  </joint>
+
+
+</robot>

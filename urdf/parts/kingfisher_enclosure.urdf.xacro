@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <link name="enclosure_link">
+      <visual name="enclosure_visual">>
+        <geometry>
+          <box size="0.262 0.182 0.075" />
+        </geometry>
+      </visual>
+    </link>
+</robot>
